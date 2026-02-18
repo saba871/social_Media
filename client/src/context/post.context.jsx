@@ -74,7 +74,16 @@ const PostProvider = ({ children }) => {
             })
 
             const result = await res.json();
-            setPosts((prev) => prev.map((post) => post._id === id ? result.post : post));
+
+            if (res.ok) {
+                const updatedData = result.data?.post || result.post;
+
+                if (updatedData) {
+                    setPosts((prev) => prev.map((p) => (p._id === id ? updatedData : p)));
+                }
+            } else if (res.status === 401) {
+                console.error("Error: 401");
+            }
         } catch (error) {
             console.log("error in updatePosts context", error);
         }

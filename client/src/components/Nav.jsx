@@ -7,20 +7,25 @@ const Nav = () => {
     const location = useLocation();
     const [isScrolled, setIsScrolled] = useState(false);
 
-    // Track scroll to trigger the morphing effect
     useEffect(() => {
         const handleScroll = () => setIsScrolled(window.scrollY > 30);
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    const navLinks = [
+    const allLinks = [
         { name: "Home", path: "/" },
         { name: "Posts", path: "/posts" },
         { name: "About", path: "/about" },
         { name: "Contact", path: "/contact" },
         { name: "Profile", path: "/profile" },
     ];
+
+    // ფილტრაციის ლოგიკა
+    const navLinks = allLinks.filter((link) => {
+        if (user) return link.path !== "/"; 
+        return link.path !== "/profile";
+    });
 
     return (
         <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] ${
@@ -33,7 +38,6 @@ const Nav = () => {
             }`}>
                 <div className="flex items-center justify-between">
 
-                    {/* Logo Section */}
                     <Link to="/" className="flex items-center gap-2 group">
                         <div className="w-9 h-9 bg-zinc-900 dark:bg-white rounded-xl flex items-center justify-center transition-transform duration-500 group-hover:rotate-[15deg]">
                             <span className="text-white dark:text-zinc-900 font-black text-xl italic">S</span>
@@ -45,7 +49,6 @@ const Nav = () => {
                         )}
                     </Link>
 
-                    {/* Navigation - Hidden on scroll for a "minimal" focus mode, or kept as icons */}
                     <div className="flex items-center gap-1 md:gap-2">
                         {navLinks.map((link) => (
                             <Link
@@ -65,7 +68,6 @@ const Nav = () => {
                         ))}
                     </div>
 
-                    {/* Auth Actions */}
                     <div className="flex items-center gap-3">
                         {user ? (
                             <button

@@ -14,15 +14,30 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const autoLogin = async () => {
+
+            const savedToken = localStorage.getItem("authToken");
+            if (!savedToken) return
+
             try {
                 const res = await fetch(`${API_URL}/auth/autologin`, {
                     method: "POST",
+                    headers: {
+                        "Authorization": `Bearer ${savedToken}`,
+                    },
                     credentials: "include",
                 })
 
                 const result = await res.json();
                 setUser(result.user);
-                navigate("/")
+
+                if (!result.user) {
+                    localStorage.removeItem("authToken");
+                    navigate("/");
+                } else {
+                    if (window.location.pathname === "/") {
+                        navigate("/profile");
+                    }
+                }
             } catch (error) {
                 console.log("error in autoLogin", error);
             }
@@ -44,6 +59,8 @@ const AuthProvider = ({ children }) => {
 
             const result = await res.json();
 
+            if (result.token) localStorage.setItem("authToken", result.token);
+
             setUser(result.user);
             navigate("/profile")
         } catch (error) {
@@ -64,6 +81,9 @@ const AuthProvider = ({ children }) => {
             })
 
             const result = await res.json();
+
+            if (result.token) localStorage.setItem("authToken", result.token);
+
             setUser(result.user);
             navigate("/profile")
         } catch (error) {
@@ -78,6 +98,8 @@ const AuthProvider = ({ children }) => {
                 method: "POST",
                 credentials: "include",
             })
+
+            localStorage.removeItem("authToken");
 
             setUser(null);
             navigate("/");

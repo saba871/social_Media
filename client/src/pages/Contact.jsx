@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 const Contact = () => {
     return (
         <div className="page-transition min-h-screen flex items-center justify-center p-6 lg:p-12 overflow-hidden">

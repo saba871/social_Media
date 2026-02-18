@@ -11,7 +11,7 @@ const createSendToken = (user, statusCode, res) => {
         sameSite: 'lax',
     };
 
-    res.status(statusCode).cookie('token', token, options).json({ user })
+    res.status(statusCode).cookie('token', token, options).json({ user, token })
 }
 
 

@@ -2,12 +2,12 @@ import { useEffect } from "react";
 import { motion, useSpring, useMotionValue } from "framer-motion";
 
 const CustomCursor = () => {
-    // Motion values კოორდინატებისთვის
+    // კოორდინატები
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
 
-    // Spring პარამეტრები - stiffness 600 და damping 40 ქმნის "აბრეშუმისებრ" მოძრაობას
-    const springConfig = { stiffness: 600, damping: 40, mass: 0.2 };
+    // მოძრაობის სინაზე
+    const springConfig = { stiffness: 800, damping: 50, mass: 0.1 };
     const x = useSpring(mouseX, springConfig);
     const y = useSpring(mouseY, springConfig);
 
@@ -23,7 +23,7 @@ const CustomCursor = () => {
 
     return (
         <motion.div
-            className="fixed top-0 left-0 w-2 h-2 bg-zinc-900 dark:bg-white rounded-full pointer-events-none z-[9999] mix-blend-difference"
+            className="fixed top-0 left-0 pointer-events-none z-[9999] flex items-center justify-center"
             style={{
                 x,
                 y,
@@ -31,14 +31,18 @@ const CustomCursor = () => {
                 translateY: "-50%",
             }}
         >
-            {/* გარეთა ნაზი შრე (Glow/Halo) */}
+            {/* მთავარი თეთრი წერტილი (Core) */}
+            <div className="w-1.5 h-1.5 bg-zinc-900 dark:bg-white rounded-full mix-blend-difference" />
+
+            {/* ნაზი Glow ეფექტი წერტილის გარშემო */}
             <motion.div
-                className="absolute inset-0 w-full h-full bg-zinc-900 dark:bg-white rounded-full blur-[2px] opacity-40"
+                className="absolute w-6 h-6 bg-zinc-900 dark:bg-white rounded-full blur-[4px] opacity-20"
                 animate={{
-                    scale: [1, 1.5, 1],
+                    scale: [1, 1.4, 1],
+                    opacity: [0.15, 0.25, 0.15]
                 }}
                 transition={{
-                    duration: 2,
+                    duration: 3,
                     repeat: Infinity,
                     ease: "easeInOut"
                 }}

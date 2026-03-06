@@ -17,56 +17,62 @@ const LogIn = () => {
 
     return (
         <div className="relative min-h-[90vh] flex items-center justify-center p-6 overflow-hidden">
-            
-            {/* 1. Kinetic Background Layers */}
-            <div className="absolute inset-0 z-0">
-                {/* Modern Grid Overlay */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
-                
-                {/* Animated Glows */}
-                <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[120px] animate-pulse"></div>
-                <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[120px] animate-pulse delay-700"></div>
+
+            {/* Warm ambient background */}
+            <div className="absolute inset-0 z-0 pointer-events-none">
+                <div className="absolute top-1/4 left-1/4 w-[420px] h-[420px] bg-[#7C9E8F]/7 rounded-full blur-[110px]" />
+                <div className="absolute bottom-1/4 right-1/4 w-[360px] h-[360px] bg-[#C4B5A0]/8 rounded-full blur-[100px]" />
             </div>
 
-            {/* 2. Authentication Monolith */}
-            <div className="relative z-10 w-full max-w-[480px] animate-entrance">
-                <div className="glass-card p-10 md:p-14 rounded-[3.5rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] border-white/20 dark:border-zinc-800/50">
-                    
-                    {/* Branding Section */}
-                    <div className="flex flex-col items-center mb-12">
-                        <div className="relative group">
-                            <div className="absolute -inset-2 bg-gradient-to-tr from-indigo-600 to-purple-500 rounded-2xl blur opacity-40 group-hover:opacity-100 transition duration-500"></div>
-                            <div className="relative w-16 h-16 bg-zinc-950 rounded-2xl flex items-center justify-center shadow-2xl rotate-3 group-hover:rotate-0 transition-transform duration-500">
-                                <svg className="w-8 h-8 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
-                                </svg>
-                            </div>
+            {/* Card */}
+            <div className="relative z-10 w-full max-w-[440px] animate-reveal">
+                <div className="bg-[#FDFCFA] dark:bg-[#1F1C1A] border border-[#E2DDD6] dark:border-[#2C2825] rounded-3xl p-9 md:p-11 shadow-[0_8px_48px_rgb(0,0,0,0.06)] dark:shadow-[0_8px_48px_rgb(0,0,0,0.3)]">
+
+                    {/* Branding */}
+                    <div className="flex flex-col items-center mb-10 text-center">
+                        <div className="w-12 h-12 bg-[#1C1917] dark:bg-[#EDE9E3] rounded-2xl flex items-center justify-center shadow-sm mb-6">
+                            <svg className="w-5 h-5 text-[#D1E0DA] dark:text-[#4A7566]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/>
+                            </svg>
                         </div>
-                        <h2 className="text-4xl font-black tracking-tighter text-zinc-900 dark:text-white mt-8 italic">CORE_ACCESS</h2>
-                        <p className="text-zinc-500 dark:text-zinc-400 mt-3 text-center text-sm font-medium tracking-tight">
-                            Establish a secure link to the <span className="text-indigo-500">Flux Network.</span>
+                        <h2 className="font-serif text-2xl font-medium tracking-tight text-stone-900 dark:text-stone-100">
+                            Welcome back
+                        </h2>
+                        <p className="text-stone-400 dark:text-stone-500 mt-2 text-[13.5px] leading-relaxed">
+                            Sign in to your{" "}
+                            <span className="text-[#4A7566] dark:text-[#9DC5B8]">Flux</span>
+                            {" "}account.
                         </p>
                     </div>
 
-                    {/* Form Integration */}
-                    <form onSubmit={handleSubmit} className="space-y-7">
-                        <div className="space-y-2.5">
-                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400 ml-4">Registry Email</label>
+                    {/* Form */}
+                    <form onSubmit={handleSubmit} className="space-y-5">
+
+                        {/* Email */}
+                        <div className="space-y-1.5">
+                            <label className="text-[11px] font-medium uppercase tracking-[0.15em] text-stone-400 dark:text-stone-500 ml-1">
+                                Email
+                            </label>
                             <input
                                 type="email"
                                 name="email"
                                 value={formData.email}
                                 onChange={handleChange}
-                                placeholder="identity@flux.io"
-                                className="w-full px-8 py-5 bg-zinc-100/50 dark:bg-zinc-800/40 border border-transparent focus:border-indigo-500/50 focus:bg-white dark:focus:bg-zinc-900/80 rounded-3xl outline-none transition-all duration-500 text-zinc-900 dark:text-white font-bold placeholder:opacity-20"
+                                placeholder="email@provider.com"
+                                className="w-full px-5 py-3.5 bg-[#F7F5F2] dark:bg-[#141210] border border-[#E2DDD6] dark:border-[#2C2825] focus:border-[#7C9E8F] dark:focus:border-[#7C9E8F] focus:shadow-[0_0_0_3px_rgb(124,158,143,0.12)] rounded-xl outline-none transition-all duration-200 text-[14px] text-stone-900 dark:text-stone-100 placeholder:text-stone-300 dark:placeholder:text-stone-600"
                                 required
                             />
                         </div>
 
-                        <div className="space-y-2.5">
-                            <div className="flex justify-between items-center px-4">
-                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400">Pass-Key</label>
-                                <a href="#" className="text-[10px] font-black uppercase tracking-widest text-indigo-500 hover:text-indigo-400 transition-colors">Reset?</a>
+                        {/* Password */}
+                        <div className="space-y-1.5">
+                            <div className="flex justify-between items-center ml-1 mr-0.5">
+                                <label className="text-[11px] font-medium uppercase tracking-[0.15em] text-stone-400 dark:text-stone-500">
+                                    Password
+                                </label>
+                                <a href="#" className="text-[11px] text-[#7C9E8F] hover:text-[#4A7566] transition-colors">
+                                    Forgot?
+                                </a>
                             </div>
                             <input
                                 type="password"
@@ -74,32 +80,42 @@ const LogIn = () => {
                                 value={formData.password}
                                 onChange={handleChange}
                                 placeholder="••••••••"
-                                className="w-full px-8 py-5 bg-zinc-100/50 dark:bg-zinc-800/40 border border-transparent focus:border-indigo-500/50 focus:bg-white dark:focus:bg-zinc-900/80 rounded-3xl outline-none transition-all duration-500 text-zinc-900 dark:text-white font-bold placeholder:opacity-20"
+                                className="w-full px-5 py-3.5 bg-[#F7F5F2] dark:bg-[#141210] border border-[#E2DDD6] dark:border-[#2C2825] focus:border-[#7C9E8F] dark:focus:border-[#7C9E8F] focus:shadow-[0_0_0_3px_rgb(124,158,143,0.12)] rounded-xl outline-none transition-all duration-200 text-[14px] text-stone-900 dark:text-stone-100 placeholder:text-stone-400 dark:placeholder:text-stone-600"
                                 required
                             />
                         </div>
 
-                        <button className="group relative w-full py-6 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-black rounded-[2rem] overflow-hidden transition-all hover:scale-[1.02] active:scale-[0.98] shadow-2xl">
-                            <div className="absolute inset-0 bg-indigo-600 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-smooth"></div>
-                            <span className="relative z-10 flex items-center justify-center gap-3 text-[10px] uppercase tracking-[0.4em]">
-                                Initialize Login
-                                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                        {/* Submit */}
+                        <div className="pt-1">
+                            <button
+                                type="submit"
+                                className="group w-full py-3.5 bg-stone-900 dark:bg-stone-100 text-[#F7F5F2] dark:text-stone-900 rounded-xl text-[13px] font-medium tracking-wide transition-all duration-200 hover:bg-[#4A7566] dark:hover:bg-[#D1E0DA] hover:shadow-[0_4px_16px_rgb(74,117,102,0.22)] active:scale-[0.99] flex items-center justify-center gap-2.5"
+                            >
+                                Sign in
+                                <svg
+                                    className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                >
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                                 </svg>
-                            </span>
-                        </button>
+                            </button>
+                        </div>
                     </form>
 
-                    {/* Switch Mode */}
-                    <div className="mt-12 flex flex-col items-center gap-4">
-                        <div className="h-px w-12 bg-zinc-200 dark:bg-zinc-800"></div>
-                        <p className="text-sm text-zinc-500 dark:text-zinc-400 font-medium">
-                            First time here? {' '}
-                            <Link to="/signup" className="text-zinc-900 dark:text-white font-black border-b-2 border-indigo-500 hover:bg-indigo-500/5 px-1 transition-all">
-                                Create Identity
+                    {/* Divider + switch */}
+                    <div className="mt-8 flex flex-col items-center gap-4">
+                        <div className="h-px w-full bg-[#EDE9E3] dark:bg-[#2C2825]" />
+                        <p className="text-[13px] text-stone-400 dark:text-stone-500">
+                            No account yet?{" "}
+                            <Link
+                                to="/signup"
+                                className="text-stone-700 dark:text-stone-300 font-medium hover:text-[#4A7566] dark:hover:text-[#9DC5B8] transition-colors"
+                            >
+                                Create one
                             </Link>
                         </p>
                     </div>
+
                 </div>
             </div>
         </div>

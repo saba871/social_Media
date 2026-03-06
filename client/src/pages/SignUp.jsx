@@ -17,106 +17,138 @@ const SignUp = () => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center lg:grid lg:grid-cols-2 lg:gap-0 bg-white dark:bg-zinc-950 transition-colors duration-500">
-            
-            {/* 1. LEFT SIDE: THE FORM CONSOLE */}
-            <div className="w-full max-w-md mx-auto px-8 py-12 z-10 animate-entrance">
-                <div className="mb-12 text-center lg:text-left">
-                    <div className="inline-block px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 mb-4">
-                        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-indigo-600 dark:text-indigo-400">New Entity Registration</span>
+        <div className="min-h-screen flex items-center justify-center lg:grid lg:grid-cols-2 bg-[#F7F5F2] dark:bg-[#141210] transition-colors duration-500">
+
+            {/* ── Left: Form ── */}
+            <div className="w-full max-w-md mx-auto px-8 py-14 z-10 animate-reveal">
+
+                {/* Header */}
+                <div className="mb-10 text-center lg:text-left">
+                    <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EDE9E3] dark:bg-[#1C1917] border border-[#E2DDD6] dark:border-[#2C2825] mb-5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#7C9E8F]" />
+                        <span className="text-[10px] font-medium uppercase tracking-[0.22em] text-stone-400 dark:text-stone-500">
+                            New account
+                        </span>
                     </div>
-                    <h2 className="text-4xl font-black tracking-tighter text-zinc-900 dark:text-white italic">JOIN_FLUX</h2>
-                    <p className="mt-3 text-zinc-500 dark:text-zinc-400 font-medium">
-                        Begin your journey with 2,000+ digital architects.
+                    <h2 className="font-serif text-3xl font-medium tracking-tight text-stone-900 dark:text-stone-100">
+                        Join Flux
+                    </h2>
+                    <p className="mt-2.5 text-[13.5px] text-stone-400 dark:text-stone-500 leading-relaxed">
+                        Begin your journey with 2,000+ creators.
                     </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="space-y-2">
-                        <label className="text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-4">Legal Designation</label>
+                {/* Form */}
+                <form onSubmit={handleSubmit} className="space-y-5">
+
+                    <div className="space-y-1.5">
+                        <label className="text-[11px] font-medium uppercase tracking-[0.15em] text-stone-400 dark:text-stone-500 ml-1">
+                            Full name
+                        </label>
                         <input
                             type="text"
                             name="fullname"
-                            placeholder="Full Name"
+                            placeholder="Your name"
                             value={formData.fullname}
                             onChange={handleChange}
-                            className="w-full px-6 py-4 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 text-zinc-900 dark:text-zinc-100 focus:ring-2 focus:ring-indigo-500/50 transition-all outline-none font-bold placeholder:opacity-30"
+                            className="w-full px-5 py-3.5 rounded-xl border border-[#E2DDD6] dark:border-[#2C2825] bg-[#FDFCFA] dark:bg-[#1F1C1A] text-stone-900 dark:text-stone-100 focus:border-[#7C9E8F] focus:shadow-[0_0_0_3px_rgb(124,158,143,0.12)] transition-all outline-none text-[14px] placeholder:text-stone-300 dark:placeholder:text-stone-600"
                             required
                         />
                     </div>
 
-                    <div className="space-y-2">
-                        <label className="text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-4">Registry Email</label>
+                    <div className="space-y-1.5">
+                        <label className="text-[11px] font-medium uppercase tracking-[0.15em] text-stone-400 dark:text-stone-500 ml-1">
+                            Email
+                        </label>
                         <input
                             type="email"
                             name="email"
-                            placeholder="name@flux.io"
+                            placeholder="email@provider.com"
                             value={formData.email}
                             onChange={handleChange}
-                            className="w-full px-6 py-4 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 text-zinc-900 dark:text-zinc-100 focus:ring-2 focus:ring-indigo-500/50 transition-all outline-none font-bold placeholder:opacity-30"
+                            className="w-full px-5 py-3.5 rounded-xl border border-[#E2DDD6] dark:border-[#2C2825] bg-[#FDFCFA] dark:bg-[#1F1C1A] text-stone-900 dark:text-stone-100 focus:border-[#7C9E8F] focus:shadow-[0_0_0_3px_rgb(124,158,143,0.12)] transition-all outline-none text-[14px] placeholder:text-stone-300 dark:placeholder:text-stone-600"
                             required
                         />
                     </div>
 
-                    <div className="space-y-2">
-                        <label className="text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-4">Pass-Key</label>
+                    <div className="space-y-1.5">
+                        <label className="text-[11px] font-medium uppercase tracking-[0.15em] text-stone-400 dark:text-stone-500 ml-1">
+                            Password
+                        </label>
                         <input
                             type="password"
                             name="password"
                             placeholder="••••••••"
                             value={formData.password}
                             onChange={handleChange}
-                            className="w-full px-6 py-4 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 text-zinc-900 dark:text-zinc-100 focus:ring-2 focus:ring-indigo-500/50 transition-all outline-none font-bold placeholder:opacity-30"
+                            className="w-full px-5 py-3.5 rounded-xl border border-[#E2DDD6] dark:border-[#2C2825] bg-[#FDFCFA] dark:bg-[#1F1C1A] text-stone-900 dark:text-stone-100 focus:border-[#7C9E8F] focus:shadow-[0_0_0_3px_rgb(124,158,143,0.12)] transition-all outline-none text-[14px] placeholder:text-stone-400 dark:placeholder:text-stone-600"
                             required
                         />
                     </div>
 
-                    <button className="group relative w-full py-5 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-black rounded-2xl overflow-hidden transition-all hover:scale-[1.02] active:scale-[0.98] shadow-2xl mt-4">
-                        <div className="absolute inset-0 bg-indigo-600 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-                        <span className="relative z-10 text-[10px] uppercase tracking-[0.4em]">Initialize Account</span>
-                    </button>
+                    <div className="pt-1.5">
+                        <button
+                            type="submit"
+                            className="group w-full py-3.5 bg-stone-900 dark:bg-stone-100 text-[#F7F5F2] dark:text-stone-900 rounded-xl text-[13px] font-medium tracking-wide transition-all duration-200 hover:bg-[#4A7566] dark:hover:bg-[#D1E0DA] hover:shadow-[0_4px_16px_rgb(74,117,102,0.22)] active:scale-[0.99] flex items-center justify-center gap-2.5"
+                        >
+                            Create account
+                            <svg
+                                className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            >
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                            </svg>
+                        </button>
+                    </div>
 
-                    <p className="text-center text-sm text-zinc-500 dark:text-zinc-400 mt-8">
-                        Already synced with us? {' '}
-                        <Link to="/login" className="text-zinc-900 dark:text-white font-black border-b-2 border-indigo-500 hover:bg-indigo-500/10 transition-all">
-                            Log In Here
-                        </Link>
-                    </p>
+                    {/* Divider + switch */}
+                    <div className="flex flex-col items-center gap-3.5 pt-2">
+                        <div className="h-px w-full bg-[#EDE9E3] dark:bg-[#2C2825]" />
+                        <p className="text-[13px] text-stone-400 dark:text-stone-500">
+                            Already have an account?{" "}
+                            <Link
+                                to="/login"
+                                className="text-stone-700 dark:text-stone-300 font-medium hover:text-[#4A7566] dark:hover:text-[#9DC5B8] transition-colors"
+                            >
+                                Sign in
+                            </Link>
+                        </p>
+                    </div>
                 </form>
             </div>
 
-            {/* 2. RIGHT SIDE: THE VISUAL MONOLITH */}
-            <div className="hidden lg:block relative h-[calc(100vh-2rem)] m-4 overflow-hidden rounded-[3rem] group">
-                {/* Background Image with Overlay */}
+            {/* ── Right: Visual panel ── */}
+            <div className="hidden lg:block relative h-[calc(100vh-2rem)] m-4 overflow-hidden rounded-3xl group">
+
+                {/* Image */}
                 <img
                     src="https://images.unsplash.com/photo-1635776062127-d379bfcba9f8?q=80&w=2564&auto=format&fit=crop"
                     alt="Abstract Art"
-                    className="absolute inset-0 w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-[2s]"
+                    className="absolute inset-0 w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 group-hover:scale-[1.03] transition-all duration-[2s]"
                 />
-                
-                {/* Gradient Wash */}
-                <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/20 via-transparent to-zinc-950/90 group-hover:opacity-80 transition-opacity duration-700"></div>
 
-                {/* Floating Content Card */}
-                <div className="absolute inset-x-8 bottom-8 p-10 backdrop-blur-md bg-white/10 border border-white/20 rounded-[2.5rem] animate-slideUp">
-                    <p className="text-3xl font-black text-white leading-tight tracking-tighter italic mb-6">
-                        "THE BEST WAY TO PREDICT THE FUTURE IS TO CREATE IT."
+                {/* Warm overlay — replaces indigo gradient */}
+                <div className="absolute inset-0 bg-gradient-to-b from-[#1C1917]/10 via-transparent to-[#1C1917]/80" />
+
+                {/* Ambient warm orb */}
+                <div className="absolute -top-20 -left-20 w-80 h-80 bg-[#7C9E8F]/15 blur-[90px] rounded-full" />
+
+                {/* Quote card */}
+                <div className="absolute inset-x-7 bottom-7 p-8 bg-[#1C1917]/70 backdrop-blur-md border border-white/8 rounded-2xl">
+                    <p className="font-serif text-xl font-normal italic text-stone-200 leading-snug mb-6">
+                        "The best way to predict the future is to create it."
                     </p>
-                    <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-500 to-purple-500 p-0.5">
-                           <div className="w-full h-full rounded-[0.9rem] bg-zinc-900 flex items-center justify-center">
-                                <span className="text-white text-xs font-black">SF</span>
-                           </div>
+                    <div className="flex items-center gap-3.5">
+                        <div className="w-10 h-10 rounded-xl bg-[#D1E0DA]/15 border border-[#D1E0DA]/20 flex items-center justify-center">
+                            <span className="text-[#D1E0DA] text-[11px] font-medium tracking-wide">SF</span>
                         </div>
                         <div>
-                            <span className="block text-white font-black text-sm uppercase tracking-widest">Design Core</span>
-                            <span className="block text-white/50 text-xs font-bold uppercase tracking-widest">Flux Media Group</span>
+                            <span className="block text-stone-200 text-[12.5px] font-medium">Design Core</span>
+                            <span className="block text-stone-500 text-[11px]">Flux Media Group</span>
                         </div>
                     </div>
                 </div>
 
-                {/* Ambient Light Effect */}
-                <div className="absolute -top-24 -left-24 w-96 h-96 bg-indigo-500/20 blur-[100px] rounded-full"></div>
             </div>
         </div>
     );
